@@ -26,6 +26,10 @@ namespace BankEncapsulation
 
         }
 
+        public void Withdraw(double amount)
+        { 
+            Balance -= amount;
+        }
 
     }
 
@@ -55,6 +59,35 @@ namespace BankEncapsulation
             }
         }
 
+        private int _Pin;
+
+        private void SetPin()
+        {
+            _Pin = 1234;
+        }
+
+        public bool CheckPin(int userPin)
+        {
+            SetPin();
+            return (_Pin == userPin) ? true : false;
+            
+        }
+
+        public static int GetInput()
+        {
+            bool numCheck;
+            numCheck = int.TryParse(Console.ReadLine(), out int num);
+
+            while (!numCheck)
+            {
+                Console.WriteLine("Please enter a number: ");
+                numCheck = int.TryParse(Console.ReadLine(), out num);
+            }
+
+            return num;
+        }
 
     }
+
+
 }
